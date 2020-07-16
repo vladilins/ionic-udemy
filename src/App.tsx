@@ -30,6 +30,7 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+import "./theme/theme.css";
 import Courses from "./pages/Courses";
 import CourseGoals from "./pages/CourseGoals";
 import AllGoals from "./pages/AllGoals";
