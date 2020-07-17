@@ -56,13 +56,13 @@ const App: React.FC = () => (
         <IonContent>
           <IonList>
             <IonMenuToggle>
-              <IonItem button routerLink="/all-goals">
+              <IonItem button routerLink="/all-goals" routerDirection="none">
                 <IonIcon slot="start" icon={options}></IonIcon>
                 <IonLabel>All Goals</IonLabel>
               </IonItem>
             </IonMenuToggle>
             <IonMenuToggle>
-              <IonItem button routerLink="/filter">
+              <IonItem button routerLink="/filter" routerDirection="none">
                 <IonIcon slot="start" icon={options}></IonIcon>
                 <IonLabel>Filter</IonLabel>
               </IonItem>
