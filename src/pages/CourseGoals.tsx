@@ -8,8 +8,10 @@ import {
   IonButtons,
   IonBackButton,
 } from "@ionic/react";
+import { useParams } from "react-router-dom";
 
 const CourseGoals: React.FC = () => {
+  const selectedCourseId = useParams<{ courseId: string }>().courseId;
   return (
     <IonPage>
       <IonHeader>

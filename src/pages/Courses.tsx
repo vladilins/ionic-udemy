@@ -34,18 +34,20 @@ const Courses: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonGrid>
-          {COURSE_DATA.map((course) => {
+          {COURSE_DATA.map((course) => (
             <IonRow key={course.id}>
               <IonCol size-md="4" offset-md="4">
                 <IonCard>
-                  <IonCardContent>
-                    <h2 className="ion-text-center">{course.title}</h2>
-                    <IonButton routerLink="">View Course Goals</IonButton>
+                  <IonCardContent className="ion-text-center">
+                    <h2>{course.title}</h2>
+                    <IonButton routerLink={`/courses/${course.id}`}>
+                      View Course Goals
+                    </IonButton>
                   </IonCardContent>
                 </IonCard>
               </IonCol>
-            </IonRow>;
-          })}
+            </IonRow>
+          ))}
         </IonGrid>
       </IonContent>
     </IonPage>
