@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   IonHeader,
   IonContent,
@@ -6,8 +6,8 @@ import {
   IonTitle,
   IonPage,
   IonButtons,
-  IonMenuButton
-} from '@ionic/react';
+  IonMenuButton,
+} from "@ionic/react";
 
 const AllGoals: React.FC = () => {
   return (
