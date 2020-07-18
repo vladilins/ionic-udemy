@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   IonHeader,
   IonContent,
@@ -20,6 +20,7 @@ import { addOutline } from 'ionicons/icons';
 
 import AddCourseModal from '../components/AddCourseModal';
 import CourseItem from '../components/CourseItem';
+import CoursesContext from '../data/courses-context';
 
 export const COURSE_DATA = [
   {
@@ -60,6 +61,8 @@ const Courses: React.FC = () => {
 
   const [isAdding, setIsAdding] = useState(false);
 
+  const coursesCtx = useContext(CoursesContext);
+
   const startAddCourseHandler = () => {
     setIsAdding(true);
   };
@@ -68,9 +71,18 @@ const Courses: React.FC = () => {
     setIsAdding(false);
   };
 
+  const courseAddHandler = (title: string, date: Date) => {
+    coursesCtx.addCourse(title, date);
+    setIsAdding(false);
+  };
+
   return (
     <React.Fragment>
-      <AddCourseModal show={isAdding} onCancel={cancelAddCourseHandler} />
+      <AddCourseModal
+        show={isAdding}
+        onCancel={cancelAddCourseHandler}
+        onSave={courseAddHandler}
+      />
       <IonPage>
         <IonHeader>
           <IonToolbar>
@@ -86,7 +98,7 @@ const Courses: React.FC = () => {
         </IonHeader>
         <IonContent>
           <IonGrid>
-            {COURSE_DATA.map(course => (
+            {coursesCtx.courses.map(course => (
               <IonRow key={course.id}>
                 <IonCol size-md="4" offset-md="4">
                   <CourseItem

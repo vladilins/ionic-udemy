@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 import {
   IonModal,
   IonHeader,
@@ -13,14 +13,16 @@ import {
   IonInput,
   IonButton,
   IonDatetime,
-  IonText,
-} from "@ionic/react";
+  IonText
+} from '@ionic/react';
 
 const AddCourseModal: React.FC<{
   show: boolean;
   onCancel: () => void;
-}> = (props) => {
-  const [error, setError] = useState("");
+  onSave: (title: string, date: Date) => void;
+}> = props => {
+  const [error, setError] = useState('');
+
   const titleRef = useRef<HTMLIonInputElement>(null);
   const dateRef = useRef<HTMLIonDatetimeElement>(null);
 
@@ -31,13 +33,17 @@ const AddCourseModal: React.FC<{
     if (
       !enteredTitle ||
       !selectedDate ||
-      enteredTitle.toString().trim.length === 0
+      enteredTitle.toString().trim().length === 0 ||
+      selectedDate.trim().length === 0
     ) {
-      setError("Please select a valid title and select a date");
+      setError('Please enter a valid title and select a valid date.');
       return;
     }
-    setError("");
+    setError('');
+
+    props.onSave(enteredTitle.toString(), new Date(selectedDate));
   };
+
   return (
     <IonModal isOpen={props.show}>
       <IonHeader>
